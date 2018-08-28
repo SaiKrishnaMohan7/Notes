@@ -1,5 +1,7 @@
 # Notes
 
+THIS IS A SUBMODULE UPDATE TEST
+
 - *JS _class declarations_ are _not hoisted_, _function declarations_ are*
   - Class expression is another way of declaring classes. The name of a class can be accessed on the class's _name_ property
   and not the instances'.

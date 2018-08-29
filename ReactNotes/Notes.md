@@ -164,8 +164,31 @@
 - _transform-class-properties_, [source and examples](http://babeljs.io/docs/en/babel-plugin-transform-class-properties/), is a babel plugin that allows us to add properties on the class. in short, arrow functions as opposed to class methods, with `this` bound to the class!!!
 
 - Why we loose `this` binding:
-  So, after some digging around, I found that with ES6, the functions defined will, by default, have `this` as undefined. This is to prevent folks, like me, from mutating globals (JavaScript is forgiving, plus I have done that before). The `class` keyword is syntactic sugar, enforces the use of `new` while spawning children (subclasses) because it used to be possible to mutate the global object in previous versions. However, in ES6, when the class gets initialized `this` will be bound to that instance via the constructor. One thing to notice is the file that babel outputs to, it runs in strict mode that prevents `this` referring to the global (window) object, thereby, confirming my suspicion. [strict mode, `this` undefined, stackoverflow](https://stackoverflow.com/questions/9822561/why-is-this-in-an-anonymous-function-undefined-when-using-strict).
+  - So, after some digging around, I found that with ES6, the functions defined will, by default, have `this` as undefined. This is to prevent folks, like me, from mutating globals (JavaScript is forgiving, plus I have done that before). The `class` keyword is syntactic sugar, enforces the use of `new` while spawning children (subclasses) because it used to be possible to mutate the global object in previous versions. However, in ES6, when the class gets initialized `this` will be bound to that instance via the constructor. One thing to notice is the file that babel outputs to, it runs in strict mode that prevents `this` referring to the global (window) object, thereby, confirming my suspicion. [strict mode, `this` undefined, stackoverflow](https://stackoverflow.com/questions/9822561/why-is-this-in-an-anonymous-function-undefined-when-using-strict).
 
   Now, in context of React, `handleRemoveAll` is  a function that is that is the part of the sub class and not of the parent, hence, `this` is undefined. The `render` function is part of the parent class, hence, it knows whom `this` refers to because our subclass will be instantiated via the parents' constructor. On overloading the constructor we ensure that `this` is bound to the subclass that we have created.
 
   Also, classes or the code inside class syntactic boundary is executed in strict mode always and in strict mode functions will have `this` undefined
+
+## React Router
+
+- Used for multipage web apps, could be used for SPA's too using a different component.
+
+- Components offered:
+  - BrowserRouter - For client apps with flexible back-end APIs
+  
+  - HashRouter - For rigid backend APIs, server exactly knows what to do for reseource req
+  
+  - Link - for linking as with `<a>` tags but doesn't re-render the whole page, just updates URL and page chnages with ONLy those components that need to be rendered
+  
+  - NavLink - its a link with style options
+  
+  - Route - Component that renders other components if `path` matches enough. Can also haev exact path match. This is inclusive! Even though a path shall match still all children will be there
+  
+  - MemoryRouter - in memory route store, no URL mutation, good for headless browser states
+
+  - Redirect - just like backend redirects
+
+  - StaticRouter - used in SSR, render routes server-side while user isn't clicking around, url is not changing (static)
+
+  - Switch - Unlike `<Route>` this is exclusive, at any time only that Route child will be present, that has been matched. DOM is not clouded!!

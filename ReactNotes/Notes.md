@@ -34,6 +34,33 @@
 
 - A CSS reset makes sure all browsers start form the same place, style wise. every browser has its own default styles.
 
+- JS *object destructuring* cna be used to assign the property to a varible
+
+  ```javascript
+  const person = {name: 'Rocky', age: 43, location: {city: 'Philly', sht: 'ADRIAN!!'}};
+  const {city, sht: shout} = person.location;
+  ```
+
+  - default values can also be assigned. Below if name is not there in the obj for some reason 'Anonymous' will be used, just like with functions.
+
+    ```javascript
+    const {name='Anonymous', age} = person;
+    ```
+  - This can be done too
+
+    ```javascript
+    const {name: firstName = 'Anonymous', age} = person;
+    ```
+
+- With *array desstucturing* the array of variables can be pointed to items in the array by position
+
+  ```javascript
+  const address = ['1299 S Juniper Street', 'Ottawa', 'ON', 'K1R5Y9'];
+  const [street, city, province, zip] = address; //valid
+  const [, , province] = address. //valid
+  const [, , , zip = 'XXXXX'] = address; //valid
+  ```
+
 ## Babel,React
 
 - src/app.js
@@ -192,3 +219,17 @@
   - StaticRouter - used in SSR, render routes server-side while user isn't clicking around, url is not changing (static)
 
   - Switch - Unlike `<Route>` this is exclusive, at any time only that Route child will be present, that has been matched. DOM is not clouded!!
+
+## Redux
+
+- Solves global state managment problem when there is more than one component tree which are not related to each other but are a part of the app not rendered under the same parent component. Its a state conatiner just like class based components.
+
+- The only time _props_ shouldn't be used is if the props are being passed down multiple children just so the last child can use it. Best practice is to use props so that all children can use it.
+
+- Redux helps to create truly decoupled (truly reusable) components. Instead of talking to each orher or parent, the dialog is with the Redux Store.
+  - Redux store is also an object just like Class Components. This may or may not contain state managment methods etc.
+
+- Reducers define how an action will bring about change in state. Reducers determines WHAT to do when an action is dispatched.
+  - Reducers are pure fucntions! No side effects, will have explicit `return`. Shouldn't interact with things out of its scope.
+  - state or actions should never be mutated in a reducer, only read from.
+- Splitting reducer into multiple reducers to handle the different attributes (root states) of `state` for easier management is a sane thing to do.

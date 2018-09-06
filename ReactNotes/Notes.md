@@ -233,3 +233,5 @@
   - Reducers are pure fucntions! No side effects, will have explicit `return`. Shouldn't interact with things out of its scope.
   - state or actions should never be mutated in a reducer, only read from.
 - Splitting reducer into multiple reducers to handle the different attributes (root states) of `state` for easier management is a sane thing to do.
+
+- Redux's `createStore` is called with the *currentState* of the app everytime and `action` is the second arg that dictates what kind of mutation a the state will go through.

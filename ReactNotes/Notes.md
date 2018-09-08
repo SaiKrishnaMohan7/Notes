@@ -235,3 +235,9 @@
 - Splitting reducer into multiple reducers to handle the different attributes (root states) of `state` for easier management is a sane thing to do.
 
 - Redux's `createStore` is called with the *currentState* of the app everytime and `action` is the second arg that dictates what kind of mutation a the state will go through.
+
+## React-Redux
+
+- Redux, with React provides a way to access the state store in a very unique way.
+  - The `.connect()` method internally wraps a component that wants some of its children to have access to modifying the store in a Higher Order Component.
+  - This helps in a way such that the store need not be pushed down all the components to reach the component that actually wants to modify the state, basically have access to dispatchers in the form of props.

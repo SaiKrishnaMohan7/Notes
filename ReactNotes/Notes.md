@@ -61,6 +61,8 @@
   const [, , , zip = 'XXXXX'] = address; //valid
   ```
 
+- Controlled input menas the value is controlled by JS.
+
 ## Babel,React
 
 - src/app.js

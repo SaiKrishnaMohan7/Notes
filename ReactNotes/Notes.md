@@ -243,3 +243,10 @@
 - Redux, with React provides a way to access the state store in a very unique way.
   - The `.connect()` method internally wraps a component that wants some of its children to have access to modifying the store in a Higher Order Component.
   - This helps in a way such that the store need not be pushed down all the components to reach the component that actually wants to modify the state, basically have access to dispatchers in the form of props.
+  - When combining reducers using `combineReducers`, the reducers are available on an object when matching dispatches to props
+
+## General Notes
+
+- If what style is being used is/overriden needs to be checked, use the small mouse icon in debugger, this will show the exact element in the dev tools.
+  - As for what style is being applied the stuff on the right will give the details with and they are in the order of precedence
+  - When a CSS property shows as struck-through, it means that the crossed-out style was applied, but then overridden by a more specific selector, a more local rule, or by a later property within the same rule.

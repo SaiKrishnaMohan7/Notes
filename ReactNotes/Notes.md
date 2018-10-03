@@ -250,3 +250,14 @@
 - If what style is being used is/overriden needs to be checked, use the small mouse icon in debugger, this will show the exact element in the dev tools.
   - As for what style is being applied the stuff on the right will give the details with and they are in the order of precedence
   - When a CSS property shows as struck-through, it means that the crossed-out style was applied, but then overridden by a more specific selector, a more local rule, or by a later property within the same rule.
+
+- When trying to update state via the event object `e` either use assign the value to a variable or use `e.persist()` since `e.target.value` won't be available in the cb
+
+  - ```javascript
+
+    onNoteChange = (e) => {
+    // const note = e.target.value;
+
+    this.setState(() => ({ note: 'e.target.value' })); // would have to use e.persist()
+  };
+  ```

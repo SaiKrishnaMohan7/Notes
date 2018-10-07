@@ -1,6 +1,6 @@
 # gql Notes
 
-GraphQL is like a query language for API's. Like how SQL is DSL for RDMSs, Graphql is for APIs.
+GraphQL is like a query language for API's. Like how SQL is DSL for RDBMSs, Graphql is for APIs.
 
 - Problem Solved by GraphQL:
   - Less number of AJAX calls from client to server or other endpoints
@@ -13,4 +13,33 @@ GraphQL is like a query language for API's. Like how SQL is DSL for RDMSs, Graph
   - Getting the data is via trversal of edges
 
 - GraphQL is used as a middleware. It needs a schema to function properly. Basically what every single object would look like just like DBSchemas
-  - A _rootQuery_ is what determines the entry point into the graph
+  - A _RootQuery_ is what determines the entry point into the graph, a type of GraphQL object
+    ```
+      name: 'RootQueryType',
+      fieds: {
+        book: {
+          type: BookType,
+          args: {
+              id: {
+                  name: 'BookId',
+                  type: GraphQLString
+                }
+            },
+          resolve(parent, args){
+            // id is available on args so calls to DB/APIs to get data from
+          }
+        }
+      }
+    ```
+
+- Query structure:
+  - ```
+    <queryType> (argsForResolvingQuery){
+      csv - Fields/attributes one needs from the GraphQL Obj
+    }
+  ```
+    - `queryType` - The type of GraphQL object to query. ex: HumanType = GraphQLObjectType(<anObjectSpecifyingThisObjectsStructureFieldTypes>)
+
+    - `argsForResolvingQuery` - When this query hits the `graphql` endpoint/route, based on the type of GraphQL object, the respective `RootQuery` is referred. The `RootQuery`, holds the definition of how this type query will be resolved, the structure of the `args` object, ex: id, name etc. that *will* be supplied in the query and a resolution handler function, a `resolver`, that maps the query from the query space to the resolved object space. Details of where to get the object form etc.
+
+    - `csv` - what you want from the GraphQL objsct you are trying to Query.

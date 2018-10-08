@@ -45,6 +45,8 @@ GraphQL is like a query language for API's. Like how SQL is DSL for RDBMSs, Grap
     - `csv` - what you want from the GraphQL objsct you are trying to Query.
 
 - Establishing relations:
-  - When there's a necsessity to get related data, ex: userAddress from the user microservice/user DB/user table, the `GraphQLObjectType` that you are trying to query and wish to include linked info the definition of such an object includes the nested type (relatedItem) and resolver to handle the resolution of that object.
+  - When there's a necsessity to get related data, ex: userAddress from the user microservice/user DB/user table, the `GraphQLObjectType` that you are trying to query and wish to include linked info the definition of such an object includes the nested type (relatedItem) and resolver to handle the resolution of that object
 
-  - The resolver signature, `resolve(parent, args)`, will have info of the main obj and the args for the related obj.
+  - The resolver signature, `resolve(parent, args)`, will have info of the main obj and the args for the related obj
+
+- When defining the types of objects, the fields are wrapped in a function to avoid a circular object refernce problem. This happens when we are trying to relate objects

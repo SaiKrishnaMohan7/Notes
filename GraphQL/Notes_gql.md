@@ -50,3 +50,5 @@ GraphQL is like a query language for API's. Like how SQL is DSL for RDBMSs, Grap
   - The resolver signature, `resolve(parent, args)`, will have info of the main obj and the args for the related obj
 
 - When defining the types of objects, the fields are wrapped in a function to avoid a circular object refernce problem. This happens when we are trying to relate objects
+
+- Once the _RootQuery_ for all the types of queries is defined, the permutations of those queries is nicely handled by graphql. ex: books, authors rootQueries return all books and authors, can be also used to return all books by each author with varying levels of details

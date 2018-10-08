@@ -43,3 +43,8 @@ GraphQL is like a query language for API's. Like how SQL is DSL for RDBMSs, Grap
     - `argsForResolvingQuery` - When this query hits the `graphql` endpoint/route, based on the type of GraphQL object, the respective `RootQuery` is referred. The `RootQuery`, holds the definition of how this type query will be resolved, the structure of the `args` object, ex: id, name etc. that *will* be supplied in the query and a resolution handler function, a `resolver`, that maps the query from the query space to the resolved object space. Details of where to get the object form etc.
 
     - `csv` - what you want from the GraphQL objsct you are trying to Query.
+
+- Establishing relations:
+  - When there's a necsessity to get related data, ex: userAddress from the user microservice/user DB/user table, the `GraphQLObjectType` that you are trying to query and wish to include linked info the definition of such an object includes the nested type (relatedItem) and resolver to handle the resolution of that object.
+
+  - The resolver signature, `resolve(parent, args)`, will have info of the main obj and the args for the related obj.

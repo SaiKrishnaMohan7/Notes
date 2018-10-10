@@ -55,3 +55,10 @@ GraphQL is like a query language for API's. Like how SQL is DSL for RDBMSs, Grap
 
 - Mutations:
   - POST requests, for creating AND updating data
+
+- GraphQL on the front-end is taken care of by Apollo.
+  - From the three packages that are installed `gql`, from `apollo-boost`, is used to wrap the queries
+
+  - `graphql` package from `react-apollo` binds the component that needs to make the query to the query itself thereby making the data available in the `props`
+
+  - When the component loads the query is still executing in the background and once it finishes the component re-renders

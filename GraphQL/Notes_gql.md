@@ -62,3 +62,7 @@ GraphQL is like a query language for API's. Like how SQL is DSL for RDBMSs, Grap
   - `graphql` package from `react-apollo` binds the component that needs to make the query to the query itself thereby making the data available in the `props`
 
   - When the component loads the query is still executing in the background and once it finishes the component re-renders
+
+- Combining queries, `compose` from `react-apollo` serves exactly this puprpose! Kinda acts like `combineReducers`, where exactly?
+
+  - When we `matchStateToProps` and if we are using `combineReducers` then the respective piece of state is available on the `state.<reducerName>`, similarly the data returned for that particular query or mutation is avialable on `props.<mutationNameOrqueryName>` as opposed to `data`

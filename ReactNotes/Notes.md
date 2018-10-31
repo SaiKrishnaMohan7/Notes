@@ -261,3 +261,5 @@
     this.setState(() => ({ note: 'e.target.value' })); // would have to use e.persist()
   };
   ```
+
+- Calls to `this.setState` are queued. They are asynchronous and the change to state doesn't happen immediately. If changes need to verified or used instantly, supply a `callback` to `this.setState` where the change in state can be observed. This prevents weird race conditions. Plus this maybe why `componentWillMount` should be used carefully to prevent circular referernce(Not too sure about this).

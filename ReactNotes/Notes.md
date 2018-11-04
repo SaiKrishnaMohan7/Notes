@@ -272,3 +272,5 @@
   - If diff, will rerender or won't
   - Hence, if same props come in and the result is same when the same prop supplied, is a good use case for PureComponents
   - Nested states are a bad idea for these guys. There's a way to `forceUpdate` the component but that feels like fighting the framework
+
+- Experiment --> Run Scenario of deep objects in redux

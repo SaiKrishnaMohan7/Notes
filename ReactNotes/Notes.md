@@ -263,3 +263,12 @@
   ```
 
 - Calls to `this.setState` are queued. They are asynchronous and the change to state doesn't happen immediately. If changes need to verified or used instantly, supply a `callback` to `this.setState` where the change in state can be observed. This prevents weird race conditions. Plus this maybe why `componentWillMount` should be used carefully to prevent circular referernce(Not too sure about this).
+
+- Component state shouldn't too nested. React works well for states that are 1 level deep, i.e., state containing a few attributes that are objects but not object of objects. `this.setState` does a shallow merge of state to keep things fast and fluid. This causes problems if `state` is nested
+
+- PureComponent vs Component
+  - Differs how `shouldComponentUpdate` lifecycle method is expressed
+  - Does a shallow compare of `props` and `state`, i.e., shall only check refernces if same or not, no containment, no member value check
+  - If diff, will rerender or won't
+  - Hence, if same props come in and the result is same when the same prop supplied, is a good use case for PureComponents
+  - Nested states are a bad idea for these guys. There's a way to `forceUpdate` the component but that feels like fighting the framework

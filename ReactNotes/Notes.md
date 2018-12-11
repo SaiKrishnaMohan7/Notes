@@ -262,7 +262,7 @@
   };
   ```
 
-- Calls to `this.setState` are queued. They are asynchronous and the change to state doesn't happen immediately. If changes need to verified or used instantly, supply a `callback` to `this.setState` where the change in state can be observed. This prevents weird race conditions. Plus this maybe why `componentWillMount` should be used carefully to prevent circular referernce(Not too sure about this).
+- Calls to `this.setState` are queued. They are asynchronous and the change to state doesn't happen immediately. If changes need to verified or used instantly, supply a `callback` to `this.setState` where the change in state can be observed. This prevents weird race conditions. Plus this maybe why `componentWillMount` should be used carefully to prevent circular referernce (Not too sure about this).
 
 - Component state shouldn't too nested. React works well for states that are 1 level deep, i.e., state containing a few attributes that are objects but not object of objects. `this.setState` does a shallow merge of state to keep things fast and fluid. This causes problems if `state` is nested
 
@@ -274,3 +274,9 @@
   - Nested states are a bad idea for these guys. There's a way to `forceUpdate` the component but that feels like fighting the framework
 
 - Experiment --> Run Scenario of deep objects in redux
+
+## Testing
+
+- Jest can be run in `watch` mode like webpack. `--watch` is the switch.
+  - If this is a script command in package.json, this can be run like this. `yarn run <testFile> -- --watch` (`run` can be ignored, its aliased by jest) the preceding `--` means everything before this is a part of `yarn` (for older versions, newer versions just forward it to scripts directly)
+  - `expect.any()` good for testing the type of value but not the exact value. Eg: `id` chnages everytime a test runs

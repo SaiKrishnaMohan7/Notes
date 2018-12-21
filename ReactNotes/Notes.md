@@ -280,3 +280,5 @@
 - Jest can be run in `watch` mode like webpack. `--watch` is the switch.
   - If this is a script command in package.json, this can be run like this. `yarn run <testFile> -- --watch` (`run` can be ignored, its aliased by jest) the preceding `--` means everything before this is a part of `yarn` (for older versions, newer versions just forward it to scripts directly)
   - `expect.any()` good for testing the type of value but not the exact value. Eg: `id` chnages everytime a test runs
+
+- Redux uses default action object, `{ type: '@@INIT' }`, snooping aroound redux dev tools helps. Reading the [source](https://github.com/reduxjs/redux/blob/55f1d08000b1b064eaa933bbbd132230e53bcccb/src/createStore.js#L242) confirms that redux uses reserved action types to initialize the state tree

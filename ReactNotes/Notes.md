@@ -287,3 +287,5 @@
   - `react-test-renderer` is a package that is used to write unit tests for components
   - Compares the component test against a snapshot. It will *always* pass the first time since its the first time the snapshot is created
     - if the snapshot changes and test fails, the snapshot can be updated with Jest on the command line
+    - This lib is not as expressive so we opt for Enzyme. 3.x version requires to setup an adapter for the React version the project is using
+  - When using `Enzyme` the snapshot generated constains a lot of information that is more realted to Enzyme itself thant the component we are testing with it. Hence, we setup a `serializer` to get around this problem. The lib used is `enzyme-to-json`

@@ -282,3 +282,8 @@
   - `expect.any()` good for testing the type of value but not the exact value. Eg: `id` chnages everytime a test runs
 
 - Redux uses default action object, `{ type: '@@INIT' }`, snooping aroound redux dev tools helps. Reading the [source](https://github.com/reduxjs/redux/blob/55f1d08000b1b064eaa933bbbd132230e53bcccb/src/createStore.js#L242) confirms that redux uses reserved action types to initialize the state tree
+
+- Snapshot Testing
+  - `react-test-renderer` is a package that is used to write unit tests for components
+  - Compares the component test against a snapshot. It will *always* pass the first time since its the first time the snapshot is created
+    - if the snapshot changes and test fails, the snapshot can be updated with Jest on the command line

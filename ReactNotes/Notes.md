@@ -27,6 +27,7 @@
           console.log(Rectangle.name);
           //output: "Rectangle2"
       ```
+
   - [More on Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 
   - _Static Methods_ - *static* keyword, can be called without instantiating classes and can't accessed through instance
@@ -46,6 +47,7 @@
     ```javascript
     const {name='Anonymous', age} = person;
     ```
+
   - This can be done too
 
     ```javascript
@@ -116,6 +118,7 @@
 
   - Tells react what needs to be rendered.
     ex:
+
     ```javascript
     class ToDo extends React.Component{
       render(
@@ -130,6 +133,7 @@
       );
     }
     ```
+
   - Above, _ToDo_ is _React component type_ or _React component class_. It takes _props_ as parameters and returns _views_ in a particular hierarchy via _render_ method.
 
   - _render_ method returns _React Elements_ which React then takes and throws it on the screen to display. React Elements are written in JSX, which calls `React.createElement(<elementType>, <listOfProps>, <dataToBeRendered>)` ex: `React.createElement('h1', ,'Todo List For', props.name)`
@@ -179,7 +183,11 @@
 - Webpack restart everytime change to config
 - For letting webpack know that it has to use babel it has to be told that via the module object in the rules array as an object. See webpack.config.js for idea.
 - Same is for styles. The `use` array can be used to specify multiple loaders
-  
+
+### Webpack [name].bundle.js how
+
+- [Read up](https://webpack.js.org/configuration/output/#outputfilename)
+
 ### Source Maps
 
 - Source maps help with debugging. Point to the exact file where the issue is instead of the minified file.
@@ -244,6 +252,7 @@
   - The `.connect()` method internally wraps a component that wants some of its children to have access to modifying the store in a Higher Order Component.
   - This helps in a way such that the store need not be pushed down all the components to reach the component that actually wants to modify the state, basically have access to dispatchers in the form of props.
   - When combining reducers using `combineReducers`, the reducers are available on an object when matching dispatches to props
+    - For accessing the state property when doing `mapDispatchToProps`, the pieces of state handled by that reducer are can be accessed via `state.reducerName.stateProperty`
 
 ## General Notes
 
@@ -259,12 +268,15 @@
     // const note = e.target.value;
 
     this.setState(() => ({ note: 'e.target.value' })); // would have to use e.persist()
-  };
-  ```
+  };```
 
 - Calls to `this.setState` are queued. They are asynchronous and the change to state doesn't happen immediately. If changes need to verified or used instantly, supply a `callback` to `this.setState` where the change in state can be observed. This prevents weird race conditions. Plus this maybe why `componentWillMount` should be used carefully to prevent circular referernce(Not too sure about this).
 
-- Component state shouldn't too nested. React works well for states that are 1 level deep, i.e., state containing a few attributes that are objects but not object of objects. `this.setState` does a shallow merge of state to keep things fast and fluid. This causes problems if `state` is nested
+- Component state shouldn't be too nested. React works well for states that are 1 level deep, i.e., state containing a few attributes that are objects but not object of objects. `this.setState` does a shallow merge of state to keep things fast and fluid. This causes problems if `state` is nested
+
+- All calls to _setState_ are batched when inside an _event handler_, this is an optimization done by react
+
+- Create React App, CRA, extracts all configuration away. This includes all .babelrc, .eslintrc etc. If access is needed to these config files, running `npm eject or yarn eject` will give access
 
 - PureComponent vs Component
   - Differs how `shouldComponentUpdate` lifecycle method is expressed
@@ -274,3 +286,42 @@
   - Nested states are a bad idea for these guys. There's a way to `forceUpdate` the component but that feels like fighting the framework
 
 - Experiment --> Run Scenario of deep objects in redux
+  - Redux is not great for nested objects, using MobX is a better idea
+
+## React Hooks
+
+  New API released with v16.8
+
+### useState hook
+
+- Allows use state within a functional component
+- A call to useState, returns piece of state and a function to set the state value
+- Can it be looked as it returning a getter and setter? The getter being invoked but useSatet, internally, and the setter to be called by you. [Discuss with Tony, Ali]
+
+### useState vs setState
+
+- Replaces the object, if called with an object while setState merges the object
+
+### useEffect
+
+- Like a replacement for lifecycle methods
+- Do something when props change
+  - If an non empty array is passed, useState will run the function provided only if that prop changes, `componentDidUpdate`
+  - If an empty array is provided, then useState will fire only when the component renders, `componentDidMount`
+  - If an empty array provided and a function is returned from the callback function passed to useState, it does some clean up action when the component unmounts, `componentDidUnmount`
+  - If no arguments passed to useState, it will run every time state/props change
+
+### useReducer
+
+- useState uses useReducer internally
+- useReducer takes a reducer and default state as args and returns state and a dispatcher
+
+### Context API
+
+- Functions like a Redux store
+
+## Progressive Webapps
+
+### manifest.json
+
+### serviceWorkers

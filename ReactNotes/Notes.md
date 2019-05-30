@@ -270,7 +270,7 @@
     this.setState(() => ({ note: 'e.target.value' })); // would have to use e.persist()
   };```
 
-- Calls to `this.setState` are queued. They are asynchronous and the change to state doesn't happen immediately. If changes need to verified or used instantly, supply a `callback` to `this.setState` where the change in state can be observed. This prevents weird race conditions. Plus this maybe why `componentWillMount` should be used carefully to prevent circular referernce(Not too sure about this).
+- Calls to `this.setState` are queued. They are asynchronous and the change to state doesn't happen immediately. If changes need to verified or used instantly, supply a `callback` to `this.setState` where the change in state can be observed. This prevents weird race conditions. Plus this maybe why `componentWillMount` should be used carefully to prevent circular referernce (Not too sure about this).
 
 - Component state shouldn't be too nested. React works well for states that are 1 level deep, i.e., state containing a few attributes that are objects but not object of objects. `this.setState` does a shallow merge of state to keep things fast and fluid. This causes problems if `state` is nested
 
@@ -325,3 +325,18 @@
 ### manifest.json
 
 ### serviceWorkers
+
+## Testing
+
+- Jest can be run in `watch` mode like webpack. `--watch` is the switch.
+  - If this is a script command in package.json, this can be run like this. `yarn run <testFile> -- --watch` (`run` can be ignored, its aliased by jest) the preceding `--` means everything before this is a part of `yarn` (for older versions, newer versions just forward it to scripts directly)
+  - `expect.any()` good for testing the type of value but not the exact value. Eg: `id` chnages everytime a test runs
+
+- Redux uses default action object, `{ type: '@@INIT' }`, snooping aroound redux dev tools helps. Reading the [source](https://github.com/reduxjs/redux/blob/55f1d08000b1b064eaa933bbbd132230e53bcccb/src/createStore.js#L242) confirms that redux uses reserved action types to initialize the state tree
+
+- Snapshot Testing
+  - `react-test-renderer` is a package that is used to write unit tests for components
+  - Compares the component test against a snapshot. It will *always* pass the first time since its the first time the snapshot is created
+    - if the snapshot changes and test fails, the snapshot can be updated with Jest on the command line
+    - This lib is not as expressive so we opt for Enzyme. 3.x version requires to setup an adapter for the React version the project is using
+  - When using `Enzyme` the snapshot generated constains a lot of information that is more realted to Enzyme itself thant the component we are testing with it. Hence, we setup a `serializer` to get around this problem. The lib used is `enzyme-to-json`

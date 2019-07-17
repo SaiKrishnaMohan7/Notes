@@ -24,13 +24,30 @@
 
   - has: a set has a value or not; *O(n)* need verif
   - add: add an item; *O(1)*
-  - remove/delete: remove item; *O(1)*
-  - length/size: no. of elements in the set; *O(1)*
+  - delete: remove item; *O(1)*
+  - size: no. of elements in the set; *O(1)*
   - union: merge two sets; *O(n * k)*
   - intersection: common elements between two sets: *O(n * k)*
   - difference: difference between two sets: *O(n * k)*
   - subset: wether given set is a subset of the given set: *O(n * k)*
 
 - Applications:
+  
+  - For figuring out he shortest path while laying cables for telecomm
 
-  - Paranthesis balancing, palindrome, back button of the browser, undo and redo operations
+### Queue
+
+  FIFO list, with all members being assigned the same priority
+
+- Main operations and their time compelxities:
+
+  - enqueue: add an item; *O(1)*
+  - dequeue: remove an item from the begining; *O(n)* all indices have to be remapped
+  - front: get first item in queue; *O(1)*
+  - back: get last item in queue; *O(1)*
+  - isEmpty: emptiness check; *O(1)*
+  - size: no. of elements in the array: *O(1)*
+
+- Applications:
+
+  - Server responding to multiple requests

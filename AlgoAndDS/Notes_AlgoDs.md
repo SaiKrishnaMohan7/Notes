@@ -18,7 +18,7 @@
 
 ### Sets
 
-  All elments are unique
+  All elments are unique, Order is maintained
 
 - Main operations and their time compelxities:
 

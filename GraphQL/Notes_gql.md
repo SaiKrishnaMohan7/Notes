@@ -73,3 +73,11 @@ GraphQL is like a query language for API's. Like how SQL is DSL for RDBMSs, Grap
     - An array of scalar types can be returned. In the query you don't need to specify what fields one wants unlike custome types
 
   - Custom: User defined, require resolvers for each field
+    - Need to have a selection set say
+
+    ```javascript
+    user {
+      name
+      id
+    }
+    ```

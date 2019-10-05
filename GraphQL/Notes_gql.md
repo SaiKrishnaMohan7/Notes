@@ -67,3 +67,9 @@ GraphQL is like a query language for API's. Like how SQL is DSL for RDBMSs, Grap
   - Combining queries and binding to component, `compose` from `react-apollo` serves exactly this puprpose! Kinda acts like `combineReducers`, where exactly?
 
   - When we `matchStateToProps` and if we are using `combineReducers` then the respective piece of state is available on the `state.<reducerName>`, similarly the data returned for that particular query or mutation is avialable on `props.<mutationNameOrqueryName>` as opposed to `data`
+
+- Scalar and Custom types:
+  - Scalar: Int, Float, String, Boolean
+    - An array of scalar types can be returned. In the query you don't need to specify what fields one wants unlike custome types
+
+  - Custom: User defined, require resolvers for each field

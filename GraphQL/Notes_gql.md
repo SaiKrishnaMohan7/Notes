@@ -81,3 +81,7 @@ GraphQL is like a query language for API's. Like how SQL is DSL for RDBMSs, Grap
       id
     }
     ```
+
+## Subscriptions
+
+  Uses Web sockets to keep data updated, no need to fire query again, and keep the subscriber informed (Kinda like polling but better, or subscribing to a Redux store). Latest changes in real time

@@ -5,9 +5,7 @@
 ## Clickjacking
 
 - UI based attack, user doesn't see the actual button/link they are clikcing on. Can be a full website hidden from the user embedded inside an iframe
-
 - Differs from a CSRF attack, request not forged without user knowledge
-
 - Use CSS to obscure something and let user click the button
 
 - basic clickjacking
@@ -57,9 +55,9 @@ div {
  ```
 
 - Clickjacking is posible when websites can be framed, ie iframe
-- Frame busting sciprts are employed by browsers to make sure not websites are embedded in another website are not invisible and make them unclickable
-  - check and enforce that the current application window is the main or top window,
-  - make all frames visible,
+- Frame busting sciprts are employed by browsers to make sure no websites are embedded in another website are not invisible and make them unclickable
+  - check and enforce that the current application window is the main or top window
+  - make all frames visible
   - prevent clicking on invisible frames
   - intercept and flag potential clickjacking attacks to the user
 - To workaround this, iframe `sandbox` attr can be set `allow-forms` or `allow-scripts` values and the `allow-top-navigation` value is omitted then the frame buster script can be neutralized as the iframe cannot check whether or not it is the top window
@@ -141,9 +139,9 @@ div {
 <iframe src="https://acd31f6b1eacfdd2804c14f80087006c.web-security-academy.net/account"></iframe>
 ```
 
-## Prevention
+### Prevention
 
-### X-Frame-Options
+#### X-Frame-Options
 
 - Provides website owner control over use of iframes/objects
   - X-Frame_Options: deny -- No ifrmaes
@@ -152,9 +150,23 @@ div {
 
 - Returned from server
 
-### Content Security Policy (CSP)
+#### Content Security Policy (CSP)
 
 - A detection and prevention mechanism applied at the web server level, returned as a header `Content-Security-Policy: _string of policy directives_`
   - Content-Security-Policy: frame-ancestors 'none'; (X-Frame_Options: deny)
   - Content-Security-Policy: frame-ancestors 'self'; (X-Frame_Options: sameorigin)
   - Content-Security-Policy: frame-ancestors `websiteAddress/domain`; (allow from)
+
+## Cross-origin resource sharing (CORS)
+
+- Allows controlled access to resources in another domain
+- Gives some flexibilty to Same Origin Policy (SOP)
+  - SOP is a web browser security mechanism, prevents scripts (JS) from accessing data on another origin/domain, allowing access only if `domain`, `port` and `scheme` match
+  - SOP implementation
+    - URL: `http://cows-are-god.com/cow/gowmata.html`
+      - `http://cows-are-god.com/cow` - allowed; same scheme, domain and port
+      - `http://cows-are-god.com/cow3` - allowed; same scheme, domain and port
+      - `https://cows-are-god.com/cow` - not allowed; diff schema and port
+      - `https://en.cows-are-god.com/cow` - not allowed; different domain
+      - `https://www.cows-are-god.com/cow` - not allowed; different domain
+      - `https://cows-are-god.com:8080/cow` - not allowed; different port

@@ -32,7 +32,7 @@
   - subset: wether given set is a subset of the given set: *O(n * k)*
 
 - Applications:
-  
+
   - For figuring out he shortest path while laying cables for telecomm
 
 ### Queue
@@ -51,3 +51,14 @@
 - Applications:
 
   - Server responding to multiple requests
+
+### HashTables/Maps
+
+  Key-value pair storing structure
+
+- Main operations and their time compelxities:
+
+  - get: get a value; *O(1)*
+  - set: add key-value pair *O(1)*
+  - has: containment; *O(1)*
+  - size: no. of elements: *O(1)*

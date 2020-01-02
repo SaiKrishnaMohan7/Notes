@@ -73,3 +73,19 @@
       - Linear Probing: Increment (by one) hash till we find empty slot; Causes clustering, values getting stored in nearby slots thereby delaying probing over time; (hash1(key) + increment) % size
       - Quadratic Probing: Increment using a qudratic fucntion; slots are too spread out; May end up in an infinite loop; (hash1(key) + increment^2) % size
       - Double Hashing: Use two has fucntions; (hash1(key) + increment * hash2(key)) % size
+
+### Tree
+
+  Nodes, edges and leaves
+
+- Main operations and their time compelxities:
+
+  - lookup, insert, delete: *O(logn)* BST
+
+- Applications:
+
+  - Hierarchical Data
+  - Databases; Indexing
+  - AutoCompletion: Chrome, web searches
+  - Compilers; ASTs
+  - Compression; jpg, mp3

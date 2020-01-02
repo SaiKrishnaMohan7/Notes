@@ -61,4 +61,15 @@
   - get: get a value; *O(1)*
   - set: add key-value pair *O(1)*
   - has: containment; *O(1)*
-  - size: no. of elements: *O(1)*
+  - remove: *O(1)*
+  - size: no. of elements; *O(1)*
+
+- HashTables use hashong fucntions for storing key - value pairs
+
+  - Collisions can occur when doing so
+  - Collision mitigation: (divide increment by size of structure being used by the hashing fucntion for storage)
+    - Chanining: Store value in a LL, if collision, add the value at the end of LL. The LL may be in an array
+    - Open addressing: Find different slot to store item. Multiple addressing algos
+      - Linear Probing: Increment (by one) hash till we find empty slot; Causes clustering, values getting stored in nearby slots thereby delaying probing over time; (hash1(key) + increment) % size
+      - Quadratic Probing: Increment using a qudratic fucntion; slots are too spread out; May end up in an infinite loop; (hash1(key) + increment^2) % size
+      - Double Hashing: Use two has fucntions; (hash1(key) + increment * hash2(key)) % size

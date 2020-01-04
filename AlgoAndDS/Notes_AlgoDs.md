@@ -70,17 +70,33 @@
   - Collision mitigation: (divide increment by size of structure being used by the hashing fucntion for storage)
     - Chanining: Store value in a LL, if collision, add the value at the end of LL. The LL may be in an array
     - Open addressing: Find different slot to store item. Multiple addressing algos
-      - Linear Probing: Increment (by one) hash till we find empty slot; Causes clustering, values getting stored in nearby slots thereby delaying probing over time; (hash1(key) + increment) % size
-      - Quadratic Probing: Increment using a qudratic fucntion; slots are too spread out; May end up in an infinite loop; (hash1(key) + increment^2) % size
-      - Double Hashing: Use two has fucntions; (hash1(key) + increment * hash2(key)) % size
+      - Linear Probing: Increment (by one) hash till we find empty slot; Causes clustering, values getting stored in nearby slots thereby delaying probing over time; *(hash1(key) + increment) % size*
+      - Quadratic Probing: Increment using a qudratic fucntion; slots are too spread out; May end up in an infinite loop; *(hash1(key) + increment^2) % size*
+      - Double Hashing: Use two has fucntions; *(hash1(key) + increment  * hash2(key)) % size*
 
 ### Tree
 
-  Nodes, edges and leaves
+  Nodes, edges and leaves. Non linear DS.
 
 - Main operations and their time compelxities:
 
   - lookup, insert, delete: *O(logn)* BST
+
+- Traversals:
+
+  - Breadth First
+    Level order traversal; Visit each level of the tree
+  - Depth First
+    - Pre-order - Root, Left, Right
+    - in-order - left, root, right
+    - post-order - right, left, root
+
+- Height of a Tree
+    Number of edges from leaf to root
+  - *1 + max(height(leftSubTree), height(rightSubTree))*
+
+- Depth of a Tree
+    Number of edges from the root to the leaves
 
 - Applications:
 

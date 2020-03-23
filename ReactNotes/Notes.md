@@ -306,10 +306,10 @@
 
 - Like a replacement for lifecycle methods
 - Do something when props change
-  - If an non empty array is passed, useState will run the function provided only if that prop changes, `componentDidUpdate`
-  - If an empty array is provided, then useState will fire only when the component renders, `componentDidMount`
-  - If an empty array provided and a function is returned from the callback function passed to useState, it does some clean up action when the component unmounts, `componentDidUnmount`
-  - If no arguments passed to useState, it will run every time state/props change
+  - If an non empty array is passed, useEffect will run the function provided only if that prop changes, `componentDidUpdate`
+  - If an empty array is provided, then useEffect will fire only when the component renders, `componentDidMount`
+  - If an empty array provided and a function is returned from the callback function passed to useEffect, it does some clean up action when the component unmounts, `componentDidUnmount`
+  - If no arguments passed to useEffect, it will run every time state/props change
 
 ### useReducer
 

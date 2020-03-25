@@ -268,7 +268,8 @@
     // const note = e.target.value;
 
     this.setState(() => ({ note: 'e.target.value' })); // would have to use e.persist()
-  };```
+  };
+  ```
 
 - Calls to `this.setState` are queued. They are asynchronous and the change to state doesn't happen immediately. If changes need to verified or used instantly, supply a `callback` to `this.setState` where the change in state can be observed. This prevents weird race conditions. Plus this maybe why `componentWillMount` should be used carefully to prevent circular referernce (Not too sure about this).
 
@@ -296,7 +297,6 @@
 
 - Allows use state within a functional component
 - A call to useState, returns piece of state and a function to set the state value
-- Can it be looked as it returning a getter and setter? The getter being invoked but useSatet, internally, and the setter to be called by you. [Discuss with Tony, Ali]
 
 ### useState vs setState
 
@@ -307,8 +307,8 @@
 - Like a replacement for lifecycle methods
 - Do something when props change
   - If an non empty array is passed, useEffect will run the function provided only if that prop changes, `componentDidUpdate`
-  - If an empty array is provided, then useEffect will fire only when the component renders, `componentDidMount`
-  - If an empty array provided and a function is returned from the callback function passed to useEffect, it does some clean up action when the component unmounts, `componentDidUnmount`
+  - If no array provided, then useEffect will fire only when the component renders, `componentDidMount`
+  - If no array provided and a function is returned from the callback function passed to useEffect, it does some clean up action when the component unmounts, `componentDidUnmount`
   - If no arguments passed to useEffect, it will run every time state/props change
 
 ### useReducer
